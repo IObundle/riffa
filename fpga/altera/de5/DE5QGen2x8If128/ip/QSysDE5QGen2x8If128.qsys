@@ -9,14 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element $${FILENAME}
-   {
-      datum _originalDeviceFamily
-      {
-         value = "Stratix V";
-         type = "String";
-      }
-   }
    element PCIeGen2x8If128
    {
       datum _sortIndex
@@ -61,6 +53,7 @@
  <parameter name="globalResetBus" value="false" />
  <parameter name="hdlLanguage" value="VERILOG" />
  <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
  <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
@@ -158,7 +151,7 @@
  <module
    name="PCIeGen2x8If128"
    kind="altera_pcie_sv_hip_ast"
-   version="14.1"
+   version="20.1"
    enabled="1">
   <parameter name="INTENDED_DEVICE_FAMILY" value="Stratix V" />
   <parameter name="advanced_default_hwtcl_atomic_malformed" value="true" />
@@ -572,7 +565,7 @@
  <module
    name="XCVRCtrlGen2x8"
    kind="alt_xcvr_reconfig"
-   version="14.1"
+   version="19.1"
    enabled="1">
   <parameter name="ber_en" value="0" />
   <parameter name="device_family" value="Stratix V" />
@@ -592,14 +585,14 @@
  <module
    name="XCVRDrvGen2x8"
    kind="altera_pcie_reconfig_driver"
-   version="14.1"
+   version="20.1"
    enabled="1">
   <parameter name="INTENDED_DEVICE_FAMILY" value="Stratix V" />
   <parameter name="enable_cal_busy_hwtcl" value="0" />
   <parameter name="gen123_lane_rate_mode_hwtcl" value="Gen2 (5.0 Gbps)" />
   <parameter name="number_of_reconfig_interfaces" value="10" />
  </module>
- <module name="clk_0" kind="clock_source" version="14.1" enabled="0">
+ <module name="clk_0" kind="clock_source" version="20.1" enabled="0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -607,7 +600,7 @@
  </module>
  <connection
    kind="avalon"
-   version="14.1"
+   version="20.1"
    start="XCVRDrvGen2x8.reconfig_mgmt"
    end="XCVRCtrlGen2x8.reconfig_mgmt">
   <parameter name="arbitrationPriority" value="1" />
@@ -616,7 +609,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="14.1"
+   version="20.1"
    start="XCVRDrvGen2x8.hip_currentspeed"
    end="PCIeGen2x8If128.hip_currentspeed">
   <parameter name="endPort" value="" />
@@ -627,7 +620,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="14.1"
+   version="20.1"
    start="XCVRDrvGen2x8.reconfig_busy"
    end="XCVRCtrlGen2x8.reconfig_busy">
   <parameter name="endPort" value="" />
@@ -638,7 +631,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="14.1"
+   version="20.1"
    start="XCVRCtrlGen2x8.reconfig_from_xcvr"
    end="PCIeGen2x8If128.reconfig_from_xcvr">
   <parameter name="endPort" value="" />
@@ -649,7 +642,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="14.1"
+   version="20.1"
    start="XCVRCtrlGen2x8.reconfig_to_xcvr"
    end="PCIeGen2x8If128.reconfig_to_xcvr">
   <parameter name="endPort" value="" />
