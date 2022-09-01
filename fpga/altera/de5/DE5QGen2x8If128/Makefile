@@ -56,7 +56,7 @@ endif
 ifndef JOBS
 	JOBS=1
 endif
-include $(RIFFA_HDL_PATH)/riffa.mk
+include ../../../../$(RIFFA_HDL_PATH)/riffa.mk
 include $(BOARD_PATH)/board.mk
 
 PROJECT_IP+=ip/QSysDE5QGen2x8If128.qsys

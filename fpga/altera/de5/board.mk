@@ -38,11 +38,13 @@
 # Description:         Board-specific include makefile
 # Author:              Dustin Richmond (@darichmond)
 #-----------------------------------------------------------------------
-include $(RIFFA_ROOT_PATH)/release.mk
+CURRENT_PATH := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+
+include ../../../../release.mk
 .DEFAULT_GOAL=all
 
 BOARD_HDL:= $(BOARD_PATH)/riffa_wrapper_$(BOARD).v
-
+PROJECT=DE5QGen2x8If128
 PROJECT_IP=
 PROJECT_BIT:= bit/$(PROJECT).sof 
 PROJECT_HDL=hdl/$(PROJECT).v $(BOARD_HDL) $(patsubst %, $(RIFFA_HDL_PATH)/%,$(RIFFA_HDL))
@@ -99,7 +101,7 @@ $(RELEASE_PROJECT_PATH): check-release-src
 release:check-release-src destination
 	$(call copy-files, $(RELEASE_BIT), $(RELEASE_PROJECT_PATH)/bit)
 	$(call copy-files, $(RELEASE_CONSTR), $(RELEASE_PROJECT_PATH)/constr)
-	$(call copy-files, $(RELEASE_IP), $(RELEASE_PROJECT_PATH)/ip)
+	$(call copy-files, $(RELEASE_IP),$(RELEASE_PROJECT_PATH)/ip)
 	$(call copy-files, $(RELEASE_HDL), $(RELEASE_PROJECT_PATH)/hdl)
 	$(call copy-files, $(RELEASE_FILE), $(RELEASE_PROJECT_PATH)/prj)
 

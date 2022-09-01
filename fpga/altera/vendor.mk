@@ -40,9 +40,9 @@
 #-----------------------------------------------------------------------
 BOARD_PATH:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/$(BOARD)
 BOARD_HDL:= $(BOARD_PATH)/riffa_wrapper_$(BOARD).v
-RIFFA_ROOT_PATH:=$(BOARD_PATH)/../../../
-RIFFA_HDL_PATH:=$(BOARD_PATH)/../../riffa_hdl
-include $(RIFFA_ROOT_PATH)/release.mk
+RIFFA_ROOT_PATH:=../../..
+RIFFA_HDL_PATH:=../../riffa_hdl
+include ../../../release.mk
 
 RELEASE_BOARD_PATH=$(RELEASE_SRC_PATH)/fpga/$(VENDOR)/$(BOARD)
 SUBDIRS = $(BOARD_PROJECTS)
@@ -62,4 +62,3 @@ destination: $(RELEASE_BOARD_PATH)
 $(RELEASE_BOARD_PATH): check-release-src
 	mkdir $@
 	cp $(BOARD_HDL) $(RELEASE_BOARD_PATH)
-

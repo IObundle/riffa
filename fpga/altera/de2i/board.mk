@@ -38,11 +38,12 @@
 # Description:         Board-specific include makefile
 # Author:              Dustin Richmond (@darichmond)
 #-----------------------------------------------------------------------
-include $(RIFFA_ROOT_PATH)/release.mk
+include ../../../../release.mk
+
 .DEFAULT_GOAL=all
 
 BOARD_HDL:= $(BOARD_PATH)/riffa_wrapper_$(BOARD).v
-
+PROJECT=DE2Gen1x1If64
 PROJECT_IP=
 PROJECT_BIT:= bit/$(PROJECT).sof 
 PROJECT_HDL=hdl/$(PROJECT).v $(BOARD_HDL) $(patsubst %, $(RIFFA_HDL_PATH)/%,$(RIFFA_HDL))
@@ -86,6 +87,8 @@ clean:
 clobber:
 	rm -rf $(PROJECT_BIT)
 
+
+
 destination: $(RELEASE_PROJECT_PATH)
 	mkdir $(RELEASE_PROJECT_PATH)/bit
 	mkdir $(RELEASE_PROJECT_PATH)/constr
@@ -95,6 +98,7 @@ destination: $(RELEASE_PROJECT_PATH)
 
 $(RELEASE_PROJECT_PATH): check-release-src
 	mkdir $@
+
 
 release:check-release-src destination
 	$(call copy-files, $(RELEASE_BIT), $(RELEASE_PROJECT_PATH)/bit)

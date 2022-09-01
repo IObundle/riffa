@@ -40,7 +40,7 @@
 #-----------------------------------------------------------------------
 include release.mk
 CURRENT_PATH := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-RIFFA_ROOT_PATH := $(CURRENT_PATH)
+RIFFA_ROOT_PATH= $(CURRENT_PATH)
 
 RELEASE_VER=2.2.2
 RELEASE_DIR=riffa_$(RELEASE_VER)
@@ -52,7 +52,7 @@ RELEASE_DOC_PATH=$(CURRENT_PATH)/$(RELEASE_DOC_DIR)
 RELEASE_INSTALL_DIR=$(RELEASE_DIR)/install
 RELEASE_INSTALL_PATH=$(CURRENT_PATH)/$(RELEASE_INSTALL_DIR)
 
-VENDORS=altera xilinx
+VENDORS=altera #xilinx
 SUBDIRS=c_c++ docs driver fpga java matlab python #install
 
 all-boards: 

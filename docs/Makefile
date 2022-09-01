@@ -40,11 +40,11 @@
 #                      by parent Makefile.
 # Author:              Dustin Richmond (@darichmond)
 #-----------------------------------------------------------------------
-
+RIFFA_ROOT_PATH:=..
 CURRENT_PATH := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 CURRENT_DIR := $(shell basename $(CURRENT_PATH))
 
-include $(RIFFA_ROOT_PATH)/release.mk
+include ../release.mk
 
 all:docs
 
