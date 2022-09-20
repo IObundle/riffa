@@ -236,7 +236,7 @@
   <parameter name="bar5_size_mask_hwtcl" value="0" />
   <parameter name="bar5_type_hwtcl" value="0" />
   <parameter name="change_deemphasis_hwtcl" value="0" />
-  <parameter name="class_code_hwtcl" value="0" />
+  <parameter name="class_code_hwtcl" value="16711680" />
   <parameter name="completion_timeout_hwtcl" value="ABCD" />
   <parameter name="design_environment_hwtcl" value="QSYS" />
   <parameter name="device_id_hwtcl" value="1" />
