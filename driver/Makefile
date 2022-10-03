@@ -39,11 +39,11 @@
 #                      a RIFFA release. Expects RELEASE_SRC_PATH to be set
 #                      by parent Makefile.
 # Author:              Dustin Richmond (@darichmond)
-#-----------------------------------------------------------------------
-
+#----------------------------------------------------------------------
+RIFFA_ROOT_PATH=..
 CURRENT_PATH := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 CURRENT_DIR := $(shell basename $(CURRENT_PATH))
-include $(RIFFA_ROOT_PATH)/release.mk
+include ../release.mk
 
 release: check-release-src clean clean-release
 	cp -r $(CURRENT_PATH) $(RELEASE_SRC_PATH)/
@@ -53,4 +53,4 @@ clean-release: check-release-src
 	rm -rf $(RELEASE_SRC_PATH)/$(CURRENT_DIR)
 
 clean: 
-	sudo make -C linux $@
+#	sudo make -C linux $@

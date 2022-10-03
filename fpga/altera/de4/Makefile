@@ -40,7 +40,7 @@
 # Author:              Dustin Richmond (@darichmond)
 #-----------------------------------------------------------------------
 BOARD=de4
-BOARD_PROJECTS:= DE4Gen1x8If64 DE4Gen2x8If128
+BOARD_PROJECTS:= DE4Gen1x8If64 
 BOARD_TYPE:=classic
 VENDOR:=altera
 include ../vendor.mk
