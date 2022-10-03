@@ -125,7 +125,7 @@ always @(posedge CLK or posedge RST) begin
 
 		2'd3: begin // Start TX with save length and data value
 			if (CHNL_TX_DATA_REN & CHNL_TX_DATA_VALID) begin
-				rData <= #1 {rCount + 4, rCount + 3, rCount + 2, rCount + 1};
+				rData <= #1 {rCount + 10, rCount + 9, rCount + 8, rCount + 7, rCount + 6, rCount + 5, rCount + 4, rCount + 3, rCount + 2, rCount + 1};
 				rCount <= #1 rCount + (C_PCI_DATA_WIDTH/32);
 				if (rCount >= rLen)
 					rState <= #1 2'd0;

@@ -70,7 +70,6 @@ module DE5QGen1x8If64
      output [C_NUM_LANES-1:0]  PCIE_TX_OUT,
 
      // ----------Oscillators----------
-     input                   OSC_BANK3D_50MHZ
      );
 
     wire                     npor;

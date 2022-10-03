@@ -43,9 +43,9 @@ CURRENT_PATH := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 CURRENT_DIR := $(shell basename $(CURRENT_PATH))
 RIFFA_ROOT_PATH:=$(CURRENT_PATH)/..
 RIFFA_HDL_PATH:=$(RIFFA_ROOT_PATH)/$(CURRENT_DIR)/riffa_hdl
-include $(RIFFA_ROOT_PATH)/release.mk
+include ../release.mk
 .DEFAULT_GOAL := all
-VENDORS:= altera xilinx 
+VENDORS:= altera 
 SUBDIRS = $(VENDORS)
 
 all classic: $(VENDORS)
