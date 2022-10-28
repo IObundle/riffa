@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 			fpga_close(fpga);
 			return -1;
 	    }
-		recvBuffer = (unsigned int *)malloc(numWords<<4);
+		recvBuffer = (unsigned int *)malloc(numWords<<2);
 		if (recvBuffer == NULL) {
 			printf("Could not malloc memory for recvBuffer\n");
 			free(sendBuffer);
