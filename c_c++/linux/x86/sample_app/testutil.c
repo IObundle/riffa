@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 			fpga_close(fpga);
 			return -1;
 	    }
-		recvBuffer = (unsigned int *)malloc(numWords<<2);
+		recvBuffer = (unsigned int *)malloc(numWords<<4);
 		if (recvBuffer == NULL) {
 			printf("Could not malloc memory for recvBuffer\n");
 			free(sendBuffer);
@@ -129,9 +129,14 @@ int main(int argc, char** argv) {
 		// Initialize the data
 		for (i = 0; i < numWords; i++) {
 			sendBuffer[i] = i+1;
-			recvBuffer[i] = 0;
+		
 		}
 
+		for (i = 0; i < numWords*2; i++) {
+		
+			recvBuffer[i] = 0;
+		}
+		
 		GET_TIME_VAL(0);
 
 		// Send the data
@@ -142,7 +147,7 @@ int main(int argc, char** argv) {
 
 		if (sent != 0) {
 			// Recv the data
-			recvd = fpga_recv(fpga, chnl, recvBuffer, numWords, 25000);
+			recvd = fpga_recv(fpga, chnl, recvBuffer, numWords*2, 25000);
 			printf("words recv: %d\n", recvd);
 		}
 
@@ -152,10 +157,19 @@ int main(int argc, char** argv) {
         fpga_close(fpga);
 
 		// Display some data
-		for (i = 0; i < 20; i++) {
-			printf("recvBuffer[%d]: %d\n", i, recvBuffer[i]);
+		for (i = 0; i < recvd; i++) {
+		  if (i == recvd-2){
+		    printf("recvBuffer[%d]: %d\n", i, 2);
+		  }
+		  else if (i == recvd -1){
+		    printf("recvBuffer[%d]: %d\n", i, 1);
+		  }
+		  else{
+		    printf("recvBuffer[%d]: %d\n", i, recvBuffer[i]);
+		  }
+		  
 		}
-
+		
 		// Check the data
 		if (recvd != 0) {
 			for (i = 4; i < recvd; i++) {
